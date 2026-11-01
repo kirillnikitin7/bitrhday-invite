@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f8f6f4">
+  <meta name="description" content="Создайте красивое приглашение на день рождения: выберите оформление, измените текст и скачайте открытку в PNG.">
+  <title>Открытка — конструктор приглашений</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+      <a class="brand" href="./" aria-label="Открытка — главная">
+        <span class="brand-mark" aria-hidden="true">✳</span>
+        <span>открытка<span class="brand-dot">.</span></span>
+      </a>
+      <span class="header-note"><span class="status-dot" aria-hidden="true"></span> Онлайн-конструктор приглашений</span>
+    </header>
+
+    <main>
+      <div class="intro">
+        <div class="eyebrow">МАГИЯ МАЛЕНЬКОГО ПРАЗДНИКА <span aria-hidden="true">✦</span></div>
+        <h1>Приглашение, <em>сделанное с любовью.</em></h1>
+        <p>Выберите настроение, впишите имя и скачайте готовую открытку. Никакой регистрации и лишних шагов.</p>
+      </div>
+
+      <div class="workspace">
+        <section class="preview-panel" aria-labelledby="preview-title">
+          <div class="panel-heading">
+            <div>
+              <span class="step-label">01 / РЕЗУЛЬТАТ</span>
+              <h2 id="preview-title">Ваша открытка</h2>
+            </div>
+            <span class="live-indicator"><span aria-hidden="true"></span> Живой предпросмотр</span>
+          </div>
+          <div class="preview-stage">
+            <div class="preview-shadow">
+              <canvas id="invitationCanvas" width="1080" height="1350" role="img" aria-label="Предпросмотр приглашения на день рождения. Текст и оформление обновляются при изменении настроек.">Для предпросмотра нужен браузер с поддержкой Canvas.</canvas>
+            </div>
+          </div>
+          <div class="preview-bottom">
+            <span>Формат PNG • 1080 × 1350 пикселей</span>
+            <span class="preview-sparkle" aria-hidden="true">✳ ✦ ✳</span>
+          </div>
+        </section>
+
+        <section class="editor-panel" aria-labelledby="editor-title">
+          <div class="panel-heading editor-heading">
+            <div>
+              <span class="step-label">02 / НАСТРОЙКИ</span>
+              <h2 id="editor-title">Добавьте свой штрих</h2>
+            </div>
+            <button id="resetBtn" class="reset-button" type="button" title="Сбросить изменения">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11a9 9 0 1 1 2.4 6.1M3 4v7h7"/></svg>
+              Сбросить
+            </button>
+          </div>
+
+          <form id="invitationForm" autocomplete="on">
+            <div class="form-section">
+              <div class="form-section-title"><span class="section-number">01</span> Оформление</div>
+              <div class="field-grid">
+                <label class="field" for="templateSelect">
+                  <span>Шаблон открытки</span>
+                  <span class="select-wrap"><select id="templateSelect" name="template"><option value="confetti">01 — Конфетти</option><option value="lavender">02 — Лавандовая сказка</option><option value="sunshine">03 — Солнечный день</option><option value="midnight">04 — Звёздный вечер</option></select></span>
+                </label>
+                <label class="field" for="fontSelect">
+                  <span>Шрифт на открытке</span>
+                  <span class="select-wrap"><select id="fontSelect" name="font"><option value="Comfortaa">Comfortaa — округлый</option><option value="Andika">Andika — дружелюбный</option><option value="Lato">Lato — мягкий</option><option value="Carlito">Carlito — лёгкий</option><option value="Inter">Inter — современный</option></select></span>
+                </label>
+              </div>
+              <div class="theme-note"><span id="theme-dot" class="theme-dot" aria-hidden="true"></span><span id="theme-description">Нежные оттенки, шарики и праздничное конфетти.</span></div>
+              <button id="previewJump" type="button" class="mobile-preview-link">↑ Посмотреть изменения на открытке</button>
+            </div>
+
+            <div class="form-section">
+              <div class="form-section-title"><span class="section-number">02</span> Для кого приглашение?</div>
+              <div class="field-grid name-grid">
+                <label class="field" for="guestName"><span>Имя гостя</span><input id="guestName" name="guestName" type="text" value="Александр" maxlength="55" spellcheck="false" placeholder="Например, Александр"></label>
+                <label class="field" for="salutation"><span>Обращение</span><span class="select-wrap"><select id="salutation" name="salutation"><option value="m">Дорогой</option><option value="f">Дорогая</option><option value="none">Без обращения</option></select></span></label>
+              </div>
+            </div>
+
+            <div class="form-section">
+              <div class="form-section-title"><span class="section-number">03</span> О празднике</div>
+              <label class="field" for="heading"><span>Заголовок</span><input id="heading" name="heading" type="text" value="На день рождения!" maxlength="70" placeholder="Заголовок открытки"></label>
+              <label class="field" for="message"><span>Текст приглашения</span><textarea id="message" name="message" rows="2" maxlength="180" placeholder="Текст приглашения">Приходи разделить со мной этот чудесный день!</textarea></label>
+              <div class="field-grid">
+                <label class="field" for="dateText"><span>Дата</span><input id="dateText" name="dateText" type="text" value="21 ноября 2026" maxlength="55" placeholder="Например, 21 ноября"></label>
+                <label class="field" for="timeText"><span>Время</span><input id="timeText" name="timeText" type="text" value="17:00" maxlength="40" placeholder="Например, 17:00"></label>
+              </div>
+              <label class="field" for="locationText"><span>Место проведения</span><textarea id="locationText" name="locationText" rows="2" maxlength="140" placeholder="Где состоится праздник">Кафе «Счастье», ул. Цветочная, 12</textarea></label>
+              <label class="field" for="signature"><span>Подпись</span><input id="signature" name="signature" type="text" value="До скорой встречи!" maxlength="90" placeholder="Ваша подпись"></label>
+            </div>
+
+            <div class="action-area">
+              <button id="downloadBtn" type="button" class="primary-action">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v3h16v-3"/></svg>
+                Скачать открытку PNG
+                <span class="action-arrow" aria-hidden="true">↗</span>
+              </button>
+              <div class="action-row">
+                <button id="openBtn" type="button" class="secondary-action"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 5h6v6m0-6-9 9M19 13v6H5V5h6"/></svg> Открыть картинку</button>
+                <button id="shareBtn" type="button" class="secondary-action" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="2"/><circle cx="6" cy="12" r="2"/><circle cx="18" cy="19" r="2"/><path d="m8 11 8-5m-8 7 8 5"/></svg> Поделиться</button>
+              </div>
+              <p id="status" class="status-text" aria-live="polite">Всё готово — открытка создаётся прямо в браузере.</p>
+            </div>
+          </form>
+        </section>
+      </div>
+    </main>
+
+    <footer class="footer"><span>Сделано для тёплых встреч и красивых приглашений <span aria-hidden="true">♡</span></span><span>Без аккаунта · Бесплатно · Работает на телефоне</span></footer>
+  </div>
+  <script src="app.js" defer></script>
+</body>
+</html>
